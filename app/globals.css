@@ -1,8 +1,49 @@
 @import "tailwindcss";
 
+/* Palette: #C66F80 rose · #F4C7D0 blush · #4A6644 forest · #D7DAB3 sage */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Light theme (default) */
+:root,
+html[data-theme="light"] {
+  --background: #fef9fb;
+  --background-mid: #fceef2;
+  --foreground: #1e241e;
+  --muted: #5a5a52;
+  --card: #ffffff;
+  --card-strong: #fff5f8;
+  --border: color-mix(in srgb, #f4c7d0 70%, #d7dab3 30%);
+  --primary: #4a6644;
+  --primary-hover: #3d5638;
+  --accent: #c66f80;
+  --accent-soft: #f4c7d0;
+  --accent-wash: color-mix(in srgb, #c66f80 18%, transparent);
+  --sage: #d7dab3;
+  --sage-muted: color-mix(in srgb, #4a6644 55%, #d7dab3 45%);
+}
+
+html[data-theme="dark"] {
+  --background: #0c0f0d;
+  --background-mid: #121a14;
+  --foreground: #f2f5eb;
+  --muted: #b5c4a8;
+  --card: #141c16;
+  --card-strong: #1a241c;
+  --border: color-mix(in srgb, #4a6644 45%, #d7dab3 25%);
+  --primary: #d7dab3;
+  --primary-hover: #e5e8c8;
+  --accent: #c66f80;
+  --accent-soft: color-mix(in srgb, #f4c7d0 22%, transparent);
+  --accent-wash: color-mix(in srgb, #c66f80 22%, transparent);
+  --sage: #d7dab3;
+  --sage-muted: color-mix(in srgb, #d7dab3 75%, #4a6644 25%);
 }
 
 @theme inline {
@@ -12,15 +53,70 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
+  background-image: radial-gradient(
+      ellipse 120% 80% at 100% -15%,
+      var(--accent-wash),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 90% 55% at 0% 105%,
+      color-mix(in srgb, var(--accent-soft) 40%, transparent),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 50%,
+      color-mix(in srgb, #d7dab3 12%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      var(--background) 0%,
+      var(--background-mid) 48%,
+      var(--background) 100%
+    );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html[data-theme="dark"] body {
+  background-image: radial-gradient(
+      ellipse 120% 80% at 100% -15%,
+      var(--accent-wash),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 90% 55% at 0% 105%,
+      color-mix(in srgb, #4a6644 25%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--background) 0%,
+      var(--background-mid) 50%,
+      var(--background) 100%
+    );
+}
+
+::selection {
+  background: color-mix(in srgb, #c66f80 35%, transparent);
+}
+
+.container-page {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset;
+}
+
+html[data-theme="dark"] .card {
+  box-shadow: none;
 }

@@ -1,40 +1,38 @@
 import Link from "next/link";
-import React from "react";
 import NavLink from "./NavLink";
+import ThemeToggle from "./ThemeToggle";
+import { profile } from "../content";
 
 const navLinks = [
-  {
-    title: "About",
-    path: "#about",
-  },
-  {
-    title: "Projects",
-    path: "#projects",
-  },
-  {
-    title: "Contact",
-    path: "#contact",
-  },
+  { title: "About", path: "#about" },
+  { title: "Experience", path: "#experience" },
+  { title: "Skills", path: "#skills" },
+  { title: "Education", path: "#education" },
+  { title: "Projects", path: "#projects" },
+  { title: "Contact", path: "#contact" },
 ];
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#4a6644] bg-opacity-90">
-      <div className="flex flex-wrap items-center justify-between mx-auto px-4">
+    <nav className="fixed left-0 right-0 top-0 z-10 border-b border-[color:var(--border)] bg-[color:var(--card-strong)]/90 backdrop-blur-md">
+      <div className="container-page flex flex-wrap items-center justify-between gap-4 py-3">
         <Link
-          href={"/"}
-          className="text-2xl md:text-5xl text-white font-semibold"
+          href="/#top"
+          className="text-xl font-semibold text-[color:var(--primary)] md:text-2xl"
         >
-          Neha Kerung
+          {profile.name}
         </Link>
-        <div className="menu  block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-wrap items-center gap-3 md:gap-6">
+          <div className="block md:w-auto" id="navbar">
+            <ul className="mt-0 flex flex-wrap gap-x-2 gap-y-1 p-0 md:flex-row md:gap-x-6">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <NavLink href={link.path} title={link.title} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <ThemeToggle />
         </div>
       </div>
     </nav>

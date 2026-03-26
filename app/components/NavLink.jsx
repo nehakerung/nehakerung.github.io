@@ -1,11 +1,14 @@
 import Link from "next/link";
 
 const NavLink = ({ href, title }) => {
-    return (
-        <Link href={href} className="block py-2 pl-3 pr-4 text-white sm:text-xl rounded md:p-0 hover:text-white">
-            {title}
-        </Link>
-    );
-}
+  return (
+    <Link
+      href={href}
+      className="block rounded-md py-2 pl-2 pr-3 text-sm font-medium text-[color:var(--muted)] transition hover:text-[color:var(--primary)] md:p-0 md:text-base"
+    >
+      {title}
+    </Link>
+  );
+};
 
 export default NavLink;
