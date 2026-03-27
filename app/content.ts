@@ -33,7 +33,6 @@ export type ProjectItem = {
 export const profile = {
   name: "Neha Kerung",
   email: "nehakerung@gmail.com",
-  phone: "+44 7869 259340",
   linkedinUrl: "https://www.linkedin.com/in/neha-kerung-b673131a2",
   headline:
     "Graduate-ready Computer Science student — full-stack, ML, and Agile delivery.",

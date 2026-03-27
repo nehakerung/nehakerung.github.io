@@ -200,14 +200,6 @@ export default function Home() {
             <li>
               <a
                 className="underline decoration-[color:var(--accent)] underline-offset-4 hover:text-[color:var(--primary)]"
-                href={`tel:${profile.phone.replace(/\s/g, "")}`}
-              >
-                {profile.phone}
-              </a>
-            </li>
-            <li>
-              <a
-                className="underline decoration-[color:var(--accent)] underline-offset-4 hover:text-[color:var(--primary)]"
                 href={profile.linkedinUrl}
                 target="_blank"
                 rel="noreferrer"
